@@ -1,0 +1,31 @@
+def hanoi_solver(total_disks:int):
+    rule = 2**total_disks - 1
+    hanoi_tower1 = list(range(total_disks, 0, -1))
+    hanoi_tower2 = []
+    hanoi_tower3 = []
+    hanoi_tower_target = hanoi_tower1
+    moves = [f"{hanoi_tower1} {hanoi_tower2} {hanoi_tower3}"]
+
+    def mover(current, target):
+        #print("BEFORE:", hanoi_tower1, hanoi_tower2, hanoi_tower3)
+        x = current.pop()
+        target.append(x)
+        #print("AFTER: ", hanoi_tower1, hanoi_tower2, hanoi_tower3)
+        return current, target
+    def strategist(x, current, target, spare):
+        if  x == 1:
+            mover(current, target)
+            moves.append(f"{hanoi_tower1} {hanoi_tower2} {hanoi_tower3}")
+        else:
+            strategist(x-1, current, spare, target)
+            mover(current, target)
+            moves.append(f"{hanoi_tower1} {hanoi_tower2} {hanoi_tower3}")
+            strategist(x-1, spare, target, current)
+
+    #mover(hanoi_tower1, hanoi_tower3)
+    strategist(total_disks, hanoi_tower1, hanoi_tower3, hanoi_tower2)
+    #moves.append(str(hanoi_tower1) + str(hanoi_tower2) + str(hanoi_tower3))
+    #return moves
+    return '\n'.join(moves)
+print(hanoi_solver(2))
+
