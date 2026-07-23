@@ -1,0 +1,68 @@
+## About 
+Repo to capture and display projects completed in FreeCodeCamp's Python Developer course
+
+## Requirements by Program File
+- **Tower of Hanoi**
+  - Description:
+      - The puzzle starts with the disks piled up on the first rod, in decreasing size, with the smallest disk on top and the largest disk on the bottom.
+      - The goal of the Tower of Hanoi puzzle is moving all the disks to the last rod. To do that, you must follow three simple rules:
+      - You can move only top-most disks.
+      - You can move only one disk at a time.
+      - You cannot place larger disks on top of smaller ones.
+  - User Stories:
+      - You should have a function named hanoi_solver that takes an integer representing the total number of disks of the puzzle as the argument.
+      - The hanoi_solver function should solve the puzzle following the given rules in 2n - 1 moves, where n is the total number of disks.
+      - The hanoi_solver function should return a string with all the moves taken to solve the puzzle, including the starting arrangement, with each move on a new line. Rods should be represented as lists of integers, (the smallest disk is represented by the number 1) with each rod separated by a space. For example, hanoi_solver(3) should return the following:
+          - [3, 2, 1] [] []
+          - [3, 2] [] [1]
+          - [3] [2] [1]
+          - [3] [2, 1] []
+          - [] [2, 1] [3]
+          - [1] [2] [3]
+          - [1] [] [3, 2]
+          - [] [] [3, 2, 1]
+- **First Hash Table**
+    - Description:
+        - Build a hash table from scratch. A hash table is a data structure that stores key-value pairs. A hash table works by taking the key as an input and then hashing this key according to a specific hashing function.
+        - For the purpose of this lab, the hashing function will be simple: it will sum the Unicode values of each character in the key. The hash value will then be used as the actual key to store the associated value. The same hash value would also be used to retrieve and delete the value associated with the key.
+    - User Stories:
+        - You should define a class named HashTable with a collection attribute initialized to an empty dictionary when a new instance of HashTable is created. The collection dictionary should store key-value pairs based on the hashed value of the key.
+        - The HashTable class should have four instance methods: hash, add, remove, and lookup.
+        - The hash method should:
+            - Take a string as a parameter.
+            - Return a hashed value computed as the sum of the Unicode (ASCII) values of each character in the string. You can use the ord function for this computation.
+        - The add method should:
+            - Take two arguments representing a key-value pair, and compute the hash of the key.
+            - Use the computed hash value as a key to store a dictionary containing the key-value pair inside the collection dictionary.
+            - If multiple keys produce the same hash value, their key-value pairs should be stored in the existing nested dictionary under the same hash value.
+        - The remove method should:
+            - Take a key as its argument and compute its hash.
+            - Confirm if the key exists in the collection.
+            - Remove the corresponding key-value pair from the hash table.
+            - If the key does not exist in the collection, it should not raise an error or remove anything.
+        - The lookup method should:
+            - Take a key as its argument.
+            - Compute the hash of the key, and return the corresponding value stored inside the hash table.
+            - If the key does not exist in the collection, it should return None.
+- **Polygon Area Calculator**
+    - Description:
+        - In this project, you will use object-oriented programming to create a Rectangle class and a Square class. The Square class should be a subclass of Rectangle and inherit its methods and attributes.
+    - User Stories:
+        - You should create a Rectangle class.
+        - When a Rectangle object is created, it should be initialized with width and height attributes. The class should also contain the following methods:
+            - set_width: Sets the width of the rectangle.
+            - set_height: Sets the height of the rectangle.
+            - get_area: Returns area ( width×height).
+            - get_perimeter: Returns perimeter  2(width+height).
+            - get_diagonal: Returns diagonal  √−−−width2+height2−−.
+            - get_picture: Returns a string that represents the shape using lines of *. The number of lines should be equal to the height and the number of * in each line should be equal to the width. There should be a new line (\n) at the end of each line. If the width or height is larger than 50, this should return the string: Too big for picture..
+            - get_amount_inside: Takes another shape (square or rectangle) as an argument. Returns the number of times the passed in shape could fit inside the shape (with no rotations). For instance, a rectangle with a width of 4 and a height of 8 could fit in two squares with sides of 4.
+        - If an instance of a Rectangle is represented as a string, it should look like: Rectangle(width=5, height=10).
+        - You should create a Square class that subclasses Rectangle.
+        - When a Square object is created, it should be initialized with a single side length. The __init__ method should store the side length in both the width and height attributes from the Rectangle class.
+        - The Square class should contain the following methods:
+            - set_width: Overrides the set_width method from the Rectangle class. It should set the width and height to the side length.
+            - set_height: Overrides the set_height method from the Rectangle class. It should set the width and height to the side length.
+            - set_side: Sets the height and width of the square equal to the side length.
+        - The Square class should be able to access the Rectangle class methods.
+        - If an instance of a Square is represented as a string, it should look like: Square(side=9).
