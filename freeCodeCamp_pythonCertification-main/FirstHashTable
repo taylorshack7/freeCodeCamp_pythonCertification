@@ -1,0 +1,37 @@
+class HashTable:
+    collection = {}
+
+    def __init__(self):
+        pass
+
+    def hash(self, word):
+        count = 0
+        for char in word:
+            count += ord(char)
+        return count
+
+    def add(self, key, value):
+        key_hash = self.hash(key)
+        if key_hash in HashTable.collection:
+            HashTable.collection[key_hash][key] = value
+        else:
+            HashTable.collection[key_hash] = {key:value}
+        #HashTable.collection = {key_hash: {key, value}}
+
+    def remove(self, key):
+        key_hash = self.hash(key)
+        if key_hash in HashTable.collection:
+            if key in HashTable.collection[key_hash]:
+                #del HashTable.collection[key_hash][key]
+                HashTable.collection[key_hash].pop(key, '')
+                if not HashTable.collection[key_hash]:
+                    del HashTable.collection[key_hash]
+
+
+    def lookup(self, key):
+        key_hash = self.hash(key)
+        if key_hash in HashTable.collection:
+            if key in HashTable.collection[key_hash]:
+                return HashTable.collection[key_hash][key]
+        else:
+            return None
